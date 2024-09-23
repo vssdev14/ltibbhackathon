@@ -79,6 +79,11 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`username`, `name`, `password`) VALUES
 ('admin', 'admin', '12345');
 
+#grant permissions
+GRANT ALL PRIVILEGES ON customers.* TO 'root'@'%' IDENTIFIED BY 'admin123';
+FLUSH PRIVILEGES;
+
+
 =================================================================================================
                                 #IMP Points
 -------------------------------------------------------------------------------------------------
