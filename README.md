@@ -10,6 +10,8 @@ sudo apt-get install php libapache2-mod-php php-mysql php-curl php-gd php-json p
 
 sudo systemctl restart apache2 -y
 
+sudo systemctl enable apache2 -y
+
 sudo apt-get install mysql-server -y
 
 --------------------------------------------------------------------------------------------------------------------
