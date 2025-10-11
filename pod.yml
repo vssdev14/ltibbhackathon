@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+  namespace: vishnu
+spec:
+  containers:
+    - name: cont-1
+      image: shaikmustafa/cycle
