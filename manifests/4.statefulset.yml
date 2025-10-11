@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: mycont
-          image: shaikmustafa/clientapp:dbaimage
+          image: shaikmustafa/clientapp:dbimage
           ports:
             - containerPort: 3306
           imagePullSecrets:
