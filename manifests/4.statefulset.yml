@@ -5,7 +5,7 @@ metadata:
   name: mysql
   namespace: vishnu
 spec:
-  serviceName: appservice
+  serviceName: "mysql"
   replicas: 2
   selector:
     matchLabels:
