@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  namespace: vishnu
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dbapp
+  template:
+    metadata:
+      labels:
+        app: dbapp
+    spec:
+      containers:
+        - name: mycont
+          image: shaikmustafa/clientapp:dbaimage
+          ports:
+            - containerPort: 3306
+          imagePullSecrets:
+            - name: mysecret
+          volumeMounts:
+            - name: www
+              mountPath: /usr/share/nginx/html
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "50Mi"
+            limits:
+              cpu: "200m"
+              memory: "100Mi"
+
+      volumeClaimTemplates:
+      - metadata:
+          name: www
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 1Gi
+
+
+      
+              
+          
