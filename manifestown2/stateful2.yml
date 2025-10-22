@@ -2,10 +2,10 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: dbapp
+  name: mysql
   namespace: flm
 spec:
-  serviceName: "mysqldb"
+  serviceName: "mysql"
   replicas: 1
   selector:
     matchLabels:
