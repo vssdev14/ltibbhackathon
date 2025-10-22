@@ -18,9 +18,12 @@ spec:
         - name: mysecret
       containers:
         - name: cont-1
-          image: saidev14/client:appimage
+          image: saidev14/clientapp:appimage
           ports:
             - containerPort: 80
+          env:
+            - name: DB_HOST
+              value: mysqldb
           resources:
             requests:
               cpu: "100m"
