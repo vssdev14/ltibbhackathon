@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: donate-deployment
+  namespace: flm
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: donate
+  template:
+    metadata:
+      labels:
+        app: donate
+    spec:
+      imagePullSecrets:
+        - name: mysecret
+      containers:
+        - name: cont-1
+          image: saidev14/client:appimage
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "100Mi"
+            limits:
+              cpu: "200m"
+              memory: "200Mi"
+

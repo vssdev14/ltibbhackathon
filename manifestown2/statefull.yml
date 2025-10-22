@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: dbapp
+  namespace: flm
+spec:
+  serviceName: "dbapp-svc"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dbapp
+  template:
+    metadata:
+      labels:
+        app: dbapp
+    spec:
+      imagePullSecrets:
+        - name: mysecret
+      containers:
+        - name: dbcont
+          image: saidev14/clientapp:dbimage
+          ports:
+            - containerPort: 3306
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "100Mi"
+            limits:
+              cpu: "200m"
+              memory: "200Mi"
+          volumeMounts:
+            - name: myvolume
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: myvolume
+          persistentVolumeClaim:
+            claimName: mypvc
+
